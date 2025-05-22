@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/scripts/manager_main.js"></script>
+    <link rel="stylesheet" href="../static/styles/manager_main.css">
+    <title>Управление заказами</title>
+</head>
+<body>
+
+    <div id="success-message" class="success-message">Успешно</div>
+
+
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('new-orders')">Новый заказ</div>
+        <div class="tab" onclick="showTab('active-orders')">Активные заказы</div>
+        <form action="/logout" class="logout-button"><button type="submit">Выход</button></form>
+    </div>
+    
+
+    <div class="container" id="new-orders">
+        <button class="add-btn" onclick="toggleForm()">Добавить заказ</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Артикул</th>
+                    <th>Наименование</th>
+                    <th>Цена</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="order-list"></tbody>
+        </table>
+    </div>
+    
+    <div class="container hidden" id="active-orders">
+        <h3>Активные заказы</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Артикул</th>
+                    <th>Наименование</th>
+                    <th>Цена</th>
+                    <th>Статус заказа</th>
+                </tr>
+            </thead>
+            <tbody id="active-order-list"></tbody>
+        </table>
+    </div>
+    
+    <div id="order-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Добавить заказ</h3>
+            <input type="text" id="name" placeholder="Название элемента"><br>
+            <input type="text" id="article" placeholder="Артикул"><br>
+            <input type="number" id="price" placeholder="Цена"><br>
+            <div class="modal-buttons">
+                <button onclick="addOrder()">Добавить</button>
+                <button onclick="toggleForm()">Отмена</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
