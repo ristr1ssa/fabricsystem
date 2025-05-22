@@ -63,11 +63,9 @@ def load_user(user_id):
 
 
 def is_admin(username) -> bool:
-    user = db.session.execute(db.Query(Users).filter(
-        Users.role == 'admin').filter(Users.username == username)).scalar_one_or_none()
-    if user == None:
-        return False
-    return True
+    user = db.session.query(Users).filter_by(
+        role='admin', username=username).one_or_none()
+    return user is not None
 
 
 def get_users_fromDB():
